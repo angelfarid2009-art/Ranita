@@ -2,8 +2,8 @@
   "name": "Ranita Repositorio",
   "description": "Plugins para Series, Películas, Animes, Youtube y Twitch",
   "manifestVersion": 1,
-  "iconUrl": "https://i.pinimg.com/736x/ef/6b/62/ef6b62fe03e410b7d8af28d1a51d2e.jpg",
+  "iconUrl": "https://i.pinimg.com/736x/ef6b62/ef6b62fe03e410b7d8af28d1a51d2e.jpg",
   "pluginLists": [
-    "https://angelfarid2009-art.github.io/Ranita/plugins.json"
+    "https://raw.githubusercontent.com/angelfarid2009-art/Ranita/builds/plugins.json"
   ]
 }
