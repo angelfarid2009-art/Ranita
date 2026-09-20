@@ -25,13 +25,13 @@ class HenaojaraProvider : MainAPI() {
     override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageResponse {
         val isHome = request.name == "Episodios nuevos"
         val url = if (isHome || page <= 1) request.data else "${request.data}${if (request.data.contains("?")) "&" else "?"}pag=$page"
-        val items = app.get(url).document.select(if (isHome) "div.ul.hm article.li" else "div.ul article.li").mapNotNull { it.toEpisodePageResult() }
+        val items = app.get(url).document.select("ul li”).mapNotNull { it.toEpisodePageResult() }
         return newHomePageResponse(request.name, items, !isHome && items.isNotEmpty())
     }
 
     override suspend fun search(query: String, page: Int): SearchResponseList {
-        val url = "$mainUrl/animes?buscar=$query${if (page > 1) "&pag=$page" else ""}"
-        val results = app.get(url).document.select("div.ul article.li").mapNotNull { it.toEpisodePageResult() }
+        val url = "$mainUrl/?s=$query${if (page > 1) "&pag=$page" else ""}"
+        val results = app.get(url).document.select("ul li").mapNotNull { it.toEpisodePageResult() }
         return newSearchResponseList(results, results.isNotEmpty())
     }
 
