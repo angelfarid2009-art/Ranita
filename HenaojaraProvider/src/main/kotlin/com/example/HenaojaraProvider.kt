@@ -13,16 +13,13 @@ class HenaojaraProvider : MainAPI() {
     override val hasQuickSearch = false
     override val supportedTypes = setOf(TvType.Anime, TvType.OVA)
 
-    override val mainPage = mainPageOf(
-        mainUrl to "Episodios nuevos",
-        "${mainUrl}/animes?tipo=anime" to "Animes",
-        "${mainUrl}/animes?tipo=pelicula" to "Peliculas",
-        "${mainUrl}/animes?genero=accion&orden=desc" to "Acción",
-        "${mainUrl}/animes?genero=ciencia-ficcion&orden=desc" to "Ciencia Ficción",
-        "${mainUrl}/animes?genero=comedia&orden=desc" to "Comedia",
-        "${mainUrl}/animes?genero=drama&orden=desc" to "Drama",
-        "${mainUrl}/animes?genero=misterio&orden=desc" to "Misterio",
-        "${mainUrl}/animes?genero=shounen&orden=desc" to "Shounen"
+        override val mainPage = mainPageOf(
+        "$mainUrl/" to "Episodios nuevos",
+        "$mainUrl/animeonline/category/categorias/accion/" to "Acción",
+        "$mainUrl/animeonline/category/categorias/comedia/" to "Comedia",
+        "$mainUrl/animeonline/category/categorias/drama/" to "Drama",
+        "$mainUrl/animeonline/category/categorias/ciencia-ficcion/" to "Ciencia Ficción",
+        "$mainUrl/animeonline/category/categorias/aventura/" to "Aventura",
     )
 
     override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageResponse {
